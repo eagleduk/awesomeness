@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React Styled-Component
 
-## Available Scripts
+css파일과 class명이 없이
+style을 component화 하여, props를 직접 전달하여 스타일을 변화 시킬 수 있게 한다.
 
-In the project directory, you can run:
+Color Pink Site
+https://flatuicolors.com/
 
-### `yarn start`
+Add Styled-component
+yarn add styled-component
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+injectGlobalStyle ==> createGlobalStyle 로 변경..
+createGlobalStyle 스타일을 component화(export const {변수명}) 해주고,
+<{변수명} /> 을 render해주어야 적용이 가능하다..
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+const {변수} = {스타일 변수1}.withComponent() ==> style 기존에 있는걸 확장..
+<{변수} /> 로 스타일 적용..
 
-### `yarn test`
+extend...
+기존이에서 변경..
+const {스타일 변수2} = {스타일 변수1}.withComponent().extend`\`에서 const {스타일 변수3} = styled({스타일 변수2})`\` 으로 변경된듯..
+<{스타일 변수3} /> 으로 스타일 적용..
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+keyframes...
 
-### `yarn build`
+attr 추가도 가능...
+const {변수} = styled.{태그}.attr({}) 형태로 변수 추가..
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Mixin..
+const {변수} = css`\` 으로 선언..
+타 스타일에서 \${변수} 로 호출가능..
+스타일을 그룹화 하여 동일 스타일을 여러군데서 사용할 수 있다.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+theme 적용..
+style-components 의 ThemeProvider import..
+theme js import...
+render 에서 <ThemeProvider> 태그를 사용 가능..
+태그 안의 theme js 파일 import 를 theme 값으로 전달..
+<ThemeProvider> 하위의 태그들 style 에서 js 파일의 props 를 사용 할 수 있다..
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+nesting..
+태그 하위의 모든 스타일 변수들을 선택하여 변경 가능..
+const {스타일 변수} = styled.{태그}`${하위 스타일 변수} { }`
+식으로 하위의 스타일 변수들을 변경 가능.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+react-native 도 동일..
+근데 왜 안되는지는 모르겠다...
+extra
+https://github.com/nomadcoders/styled-awesomeness/blob/fdb5d0d7ca29ab83dc4519c03ed76ab37a9d5c34/extras.md
